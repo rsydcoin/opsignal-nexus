@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-950: #020818;
+  --navy-900: #040d24;
+  --navy-800: #071133;
+  --arcane-900: #1a0a2e;
+  --arcane-700: #2d1050;
+  --arcane-400: #7b2ec8;
+  --gold-500: #f59e0b;
+  --gold-400: #fbbf24;
+  --gold-300: #fcd34d;
+  --rune-cyan: #00e5ff;
+  --rune-emerald: #00e676;
+  --rune-red: #ff1744;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-950);
+  color: #e2d9f3;
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--arcane-700);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--arcane-400);
+}
+
+/* Font utilities */
+.font-display {
+  font-family: 'Cinzel', serif;
+}
+.font-body {
+  font-family: 'Crimson Pro', serif;
+}
+.font-ui {
+  font-family: 'Rajdhani', sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Arcane glow effects */
+.glow-gold {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.8), 0 0 20px rgba(245, 158, 11, 0.4);
+}
+.glow-arcane {
+  text-shadow: 0 0 10px rgba(123, 46, 200, 0.8), 0 0 20px rgba(123, 46, 200, 0.4);
+}
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+/* Portal button */
+.portal-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(10, 26, 74, 0.8), rgba(26, 10, 46, 0.8));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  transition: all 0.3s ease;
+}
+.portal-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(123, 46, 200, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.portal-btn:hover::before {
+  opacity: 1;
+}
+.portal-btn:hover {
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.3), 0 0 50px rgba(123, 46, 200, 0.2);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Card base */
+.arcane-card {
+  background: linear-gradient(135deg, rgba(7, 17, 51, 0.9), rgba(26, 10, 46, 0.9));
+  border: 1px solid rgba(123, 46, 200, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Input styles */
+.arcane-input {
+  background: rgba(4, 13, 36, 0.8);
+  border: 1px solid rgba(123, 46, 200, 0.4);
+  color: #e2d9f3;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+.arcane-input:focus {
+  outline: none;
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+}
+.arcane-input::placeholder {
+  color: rgba(162, 145, 200, 0.5);
+}
+
+/* Divider rune */
+.rune-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+}
+
+/* Particle container */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Floating particle */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  animation: particleDrift 8s ease-in-out infinite;
+}
+
+/* Scan overlay */
+.scan-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.8), transparent);
+  animation: scanLine 3s linear infinite;
+}
+
+/* Battle animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.processing-blink {
+  animation: blink 0.5s ease-in-out infinite;
+}
+
+/* Radar pulse rings */
+@keyframes radarRing {
+  0% { transform: scale(0); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.radar-ring {
+  animation: radarRing 2s ease-out infinite;
+}
+
+/* Level up burst */
+@keyframes levelUpBurst {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.level-burst {
+  animation: levelUpBurst 1s ease-out forwards;
+}
