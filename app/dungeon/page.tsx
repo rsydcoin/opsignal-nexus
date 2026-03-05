@@ -49,7 +49,7 @@ export default function DungeonPage() {
 
     if (dungeonResult.success) {
       const newArtifacts = dungeonResult.artifact
-        ? [...new Set([...player.artifacts, dungeonResult.artifact])]
+        ? Array.from(new Set([...player.artifacts, dungeonResult.artifact]))
         : player.artifacts;
       const { newPlayer } = addXP({ ...player, artifacts: newArtifacts }, dungeonResult.xpGained);
       updatePlayer(newPlayer);
