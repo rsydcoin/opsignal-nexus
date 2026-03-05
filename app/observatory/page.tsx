@@ -16,6 +16,7 @@ import {
   getObserverRank, getRankColor, ObserverStats,
 } from '@/lib/opnetSignals';
 import Link from 'next/link';
+import MarketTicker from '@/components/MarketTicker';
 
 const SEVERITY_COLOR: Record<string, string> = {
   LOW: '#00e676', MEDIUM: '#fbbf24', HIGH: '#fb923c', CRITICAL: '#ff1744',
@@ -163,6 +164,11 @@ export default function ObservatoryPage() {
             ))}
           </div>
         )}
+
+        {/* ── Live Market Prices ── */}
+        <div className="mb-5">
+          <MarketTicker />
+        </div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-5 mb-5">
@@ -377,12 +383,7 @@ export default function ObservatoryPage() {
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes slideIn {
-          from { transform: translateX(20px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-      `}</style>
+
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useWallet } from '@/lib/walletContext';
 import { xpProgress, getLevelTitle } from '@/lib/xpSystem';
-import { Shield, Zap, TrendingUp, Home } from 'lucide-react';
+import { Shield, Zap, TrendingUp } from 'lucide-react';
 
 export default function HUD() {
   const { walletAddress, isConnected, player, connectWallet, disconnectWallet } = useWallet();
@@ -30,6 +30,9 @@ export default function HUD() {
           {[
             { href: '/observatory',  label: 'Observatory', icon: '🛰',  highlight: true },
             { href: '/timemachine', label: 'Time Machine', icon: '⏳', highlight: false },
+            { href: '/timeline',    label: 'Timeline',     icon: '📋', highlight: false },
+            { href: '/profile',     label: 'Profile',      icon: '👤', highlight: false },
+            { href: '/predictions', label: 'Markets',      icon: '📊', highlight: false },
             { href: '/battle', label: 'Battle', icon: '⚔' },
             { href: '/radar', label: 'Radar', icon: '📡' },
             { href: '/forge', label: 'Forge', icon: '🔥' },

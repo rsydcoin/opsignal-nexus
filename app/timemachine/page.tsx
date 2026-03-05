@@ -9,8 +9,7 @@ import {
   generatePastEvents, generatePredictedEvents, liveEventsToTimeline,
   TimelineEvent, SEV_CONFIG, ERA_CONFIG, formatOffset,
 } from '@/lib/timeMachineEngine';
-import { generateAnomalyEvents } from '@/lib/signalEngine';
-import { AnomalyEvent } from '@/lib/signalEngine';
+import { generateAnomalyEvents, AnomalyEvent } from '@/lib/signalEngine';
 import Link from 'next/link';
 
 // Severity counts for the summary strip
@@ -65,7 +64,7 @@ export default function TimeMachinePage() {
   const counts      = useMemo(() => countBySeverity(allEvents), [allEvents]);
   const predictCrit = predictedEvents.filter(e => e.severity === 'CRITICAL' || e.severity === 'HIGH').length;
 
-  const handleLogged = (txHash: string, xp: number) => {
+  const handleLogged = (_txHash: string, _xp: number) => {
     if (selectedEvent) setLoggedIds(prev => new Set(Array.from(prev).concat(selectedEvent.id)));
   };
 
@@ -124,7 +123,7 @@ export default function TimeMachinePage() {
           <span className="font-mono text-[10px] text-purple-400/50 tracking-widest mr-1">ERA</span>
           {(['ALL', 'PAST', 'PRESENT', 'PREDICTED'] as const).map(f => (
             <FilterChip key={f} label={f} active={filter === f}
-              color={f === 'ALL' ? '#c087f5' : ERA_CONFIG[f === 'PRESENT' ? 'PRESENT' : f]?.color ?? '#c087f5'}
+              color={f === 'ALL' ? '#c087f5' : (ERA_CONFIG as Record<string, { color: string }>)[f]?.color ?? '#c087f5'}
               onClick={() => setFilter(f)} />
           ))}
 
@@ -133,7 +132,7 @@ export default function TimeMachinePage() {
           <span className="font-mono text-[10px] text-purple-400/50 tracking-widest mr-1">SEV</span>
           {(['ALL', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'] as const).map(s => (
             <FilterChip key={s} label={s} active={sevFilter === s}
-              color={s === 'ALL' ? '#c087f5' : SEV_CONFIG[s]?.color ?? '#c087f5'}
+              color={s === 'ALL' ? '#c087f5' : (SEV_CONFIG as Record<string, { color: string }>)[s]?.color ?? '#c087f5'}
               onClick={() => setSevFilter(s)} />
           ))}
         </div>

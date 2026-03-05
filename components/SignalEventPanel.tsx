@@ -256,16 +256,7 @@ export default function SignalEventPanel({ event, walletAddress, onClose, onLogg
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes slideRight {
-          from { transform: translateX(-100%); }
-          to   { transform: translateX(200%); }
-        }
-        @keyframes shimmer {
-          from { transform: translateX(-100%); }
-          to   { transform: translateX(200%); }
-        }
-      `}</style>
+
     </>
   );
 }

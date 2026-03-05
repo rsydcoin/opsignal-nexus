@@ -5,10 +5,14 @@ import HUD from '@/components/HUD';
 import PortalButton from '@/components/PortalButton';
 import XPBar from '@/components/XPBar';
 import { getLevelTitle } from '@/lib/xpSystem';
+import MarketTicker from '@/components/MarketTicker';
 
 const PORTALS = [
   { href: '/observatory',  icon: '🛰', label: 'Observatory',   subtitle: 'AI signal intelligence', color: 'cyan' as const },
   { href: '/timemachine', icon: '⏳', label: 'Time Machine',   subtitle: 'Explore signal history',  color: 'purple' as const },
+  { href: '/timeline',    icon: '📋', label: 'Signal Timeline', subtitle: 'Chronological feed',     color: 'cyan' as const },
+  { href: '/profile',     icon: '👤', label: 'My Profile',     subtitle: 'Reputation & badges',    color: 'gold' as const },
+  { href: '/predictions', icon: '📊', label: 'Pred. Market',   subtitle: 'Stake OP on signals',     color: 'cyan' as const },
   { href: '/battle', icon: '⚔', label: 'Signal Battle', subtitle: 'Test your predictions', color: 'gold' as const },
   { href: '/radar', icon: '📡', label: 'Risk Radar', subtitle: 'Scan vault dangers', color: 'cyan' as const },
   { href: '/forge', icon: '🔥', label: 'Yield Forge', subtitle: 'Stake & earn XP', color: 'red' as const },
@@ -102,6 +106,11 @@ export default function HomePage() {
             <XPBar xp={player.xp} />
           </div>
         )}
+
+        {/* Live Market Prices */}
+        <div className="mb-8 px-1">
+          <MarketTicker compact />
+        </div>
 
         {/* Portal Grid */}
         {isConnected ? (

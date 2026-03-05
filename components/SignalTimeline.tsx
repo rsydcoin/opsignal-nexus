@@ -29,9 +29,8 @@ const RULER_STEP_MAJOR = 15; // label every 15 min
 
 export default function SignalTimeline({ events, selectedId, onSelect, isLive = true }: SignalTimelineProps) {
   const scrollRef  = useRef<HTMLDivElement>(null);
-  const [nowTick, setNowTick] = useState(0);        // just to re-render NOW cursor
+  const [nowTick, setNowTick] = useState(0);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [tooltip, setTooltip] = useState<{ x: number; event: TimelineEvent } | null>(null);
   const isDragging = useRef(false);
   const dragStart  = useRef({ scrollLeft: 0, clientX: 0 });
 
@@ -323,7 +322,7 @@ function EventMarker({ event, x, y, isSelected, isHovered, onSelect, onHover, da
       onMouseEnter={() => onHover(event.id)}
       onMouseLeave={() => onHover(null)}
     >
-      <svg width="20" height="20" overflow="visible" style={{ overflow: 'visible' }}>
+      <svg width="20" height="20" style={{ overflow: 'visible' }}>
         {/* Stem line down to axis */}
         <line
           x1="10" y1="10"

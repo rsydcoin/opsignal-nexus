@@ -7,6 +7,7 @@ import { useWallet } from '@/lib/walletContext';
 import { calculateStake, VAULT_OPTIONS, VaultOption } from '@/lib/stakingEngine';
 import { addXP } from '@/lib/xpSystem';
 import Link from 'next/link';
+import MarketTicker from '@/components/MarketTicker';
 
 export default function ForgePage() {
   const { player, updatePlayer, isConnected, signTransaction } = useWallet();
@@ -172,6 +173,11 @@ export default function ForgePage() {
                   {isForging ? '🔥 FORGING...' : !selectedVault ? 'SELECT VAULT' : '🔥 FORGE YIELD'}
                 </button>
               )}
+            </div>
+
+            {/* Live reference prices for the selected vault tokens */}
+            <div className="arcane-card rounded-xl p-4 border border-yellow-500/15">
+              <MarketTicker compact />
             </div>
 
             <AICompanion insights={aiInsights} isAnalyzing={isForging} />

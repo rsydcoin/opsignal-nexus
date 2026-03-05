@@ -206,6 +206,20 @@ body {
   animation: scanDown 4s linear infinite;
 }
 
+/* Observatory / Time Machine animations */
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideRight {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(200%);  }
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(200%);  }
+}
+
 /* Scan overlay */
 .scan-overlay {
   position: absolute;
@@ -241,4 +255,142 @@ body {
 }
 .level-burst {
   animation: levelUpBurst 1s ease-out forwards;
+}
+
+/* Signal card reward flash */
+@keyframes rewardFlash {
+  0%   { box-shadow: 0 0 0 rgba(251,191,36,0); }
+  40%  { box-shadow: 0 0 30px rgba(251,191,36,0.5); }
+  100% { box-shadow: 0 0 0 rgba(251,191,36,0); }
+}
+.reward-flash {
+  animation: rewardFlash 0.8s ease-out forwards;
+}
+
+/* Badge pop on unlock */
+@keyframes badgePop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.badge-pop {
+  animation: badgePop 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Rarity glow pulse for CRITICAL signal cards */
+@keyframes critGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,23,68,0.3); }
+  50%       { box-shadow: 0 0 28px rgba(255,23,68,0.6); }
+}
+.crit-glow {
+  animation: critGlow 2s ease-in-out infinite;
+}
+
+/* Rarity glow pulse for RARE signal cards */
+@keyframes rareGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(251,191,36,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(251,191,36,0.45); }
+}
+.rare-glow {
+  animation: rareGlow 2.5s ease-in-out infinite;
+}
+
+/* Timeline entry slide in */
+@keyframes timelineSlideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.timeline-entry {
+  animation: timelineSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* AI confidence bar fill */
+@keyframes barFill {
+  from { width: 0%; }
+}
+.bar-fill {
+  animation: barFill 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Reputation level up glow */
+@keyframes repLevelUp {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.rep-level-up {
+  animation: repLevelUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Prediction Market ─────────────────────────────────────────── */
+
+/* Shimmer sweep — used in PredictionPanel TxStep broadcast state */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.shimmer-sweep {
+  animation: shimmer 1.1s ease-in-out infinite;
+}
+
+/* Pool ratio bar animated fill */
+@keyframes ratioFill {
+  from { width: 0%; }
+}
+.ratio-fill {
+  animation: ratioFill 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Prediction confirmed pop */
+@keyframes predConfirm {
+  0%   { transform: scale(0.8) translateY(6px); opacity: 0; }
+  65%  { transform: scale(1.06) translateY(-2px); }
+  100% { transform: scale(1)   translateY(0);     opacity: 1; }
+}
+.pred-confirm {
+  animation: predConfirm 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Market card open slide */
+@keyframes mktSlideDown {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 600px; }
+}
+.mkt-slide-down {
+  animation: mktSlideDown 0.35s ease-out forwards;
+  overflow: hidden;
+}
+
+/* VALID outcome flash */
+@keyframes validFlash {
+  0%   { box-shadow: 0 0 0   rgba(0,230,118,0); }
+  40%  { box-shadow: 0 0 28px rgba(0,230,118,0.55); }
+  100% { box-shadow: 0 0 0   rgba(0,230,118,0); }
+}
+.valid-flash { animation: validFlash 0.9s ease-out forwards; }
+
+/* FALSE outcome flash */
+@keyframes falseFlash {
+  0%   { box-shadow: 0 0 0   rgba(255,23,68,0); }
+  40%  { box-shadow: 0 0 28px rgba(255,23,68,0.55); }
+  100% { box-shadow: 0 0 0   rgba(255,23,68,0); }
+}
+.false-flash { animation: falseFlash 0.9s ease-out forwards; }
+
+/* Countdown pulse — red in last 60s */
+@keyframes countdownUrgent {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.countdown-urgent {
+  animation: countdownUrgent 0.7s ease-in-out infinite;
+}
+
+/* Prediction strip entry */
+@keyframes predStripIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pred-strip-in {
+  animation: predStripIn 0.3s ease-out forwards;
 }
