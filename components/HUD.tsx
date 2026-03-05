@@ -28,7 +28,8 @@ export default function HUD() {
         {/* Center: Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {[
-            { href: '/observatory', label: 'Observatory', icon: '🛰', highlight: true },
+            { href: '/observatory',  label: 'Observatory', icon: '🛰',  highlight: true },
+            { href: '/timemachine', label: 'Time Machine', icon: '⏳', highlight: false },
             { href: '/battle', label: 'Battle', icon: '⚔' },
             { href: '/radar', label: 'Radar', icon: '📡' },
             { href: '/forge', label: 'Forge', icon: '🔥' },
