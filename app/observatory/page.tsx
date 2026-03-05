@@ -77,7 +77,7 @@ export default function ObservatoryPage() {
     setLoggingId(anomaly.id);
     try {
       await logSignalEvent(anomaly, walletAddress);
-      setLoggedIds(prev => new Set([...prev, anomaly.id]));
+      setLoggedIds(prev => new Set(Array.from(prev).concat(anomaly.id)));
       const xp = anomaly.severity === 'CRITICAL' ? 100 : anomaly.severity === 'HIGH' ? 50 : anomaly.severity === 'MEDIUM' ? 25 : 10;
       saveObserverXP(walletAddress, xp);
       setObserverStats(loadObserverStats(walletAddress));

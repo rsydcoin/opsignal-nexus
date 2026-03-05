@@ -205,7 +205,9 @@ body {
   background: linear-gradient(90deg, transparent, rgba(0,229,255,0.6), transparent);
   animation: scanDown 4s linear infinite;
 }
-.scan-overlay{
+
+/* Scan overlay */
+.scan-overlay {
   position: absolute;
   left: 0;
   right: 0;

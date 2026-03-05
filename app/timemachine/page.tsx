@@ -66,7 +66,7 @@ export default function TimeMachinePage() {
   const predictCrit = predictedEvents.filter(e => e.severity === 'CRITICAL' || e.severity === 'HIGH').length;
 
   const handleLogged = (txHash: string, xp: number) => {
-    if (selectedEvent) setLoggedIds(prev => new Set([...prev, selectedEvent.id]));
+    if (selectedEvent) setLoggedIds(prev => new Set(Array.from(prev).concat(selectedEvent.id)));
   };
 
   return (
