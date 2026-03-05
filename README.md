@@ -1,250 +1,152 @@
-# OPSIGNAL NEXUS ⚔
+# ⚔ OPSIGNAL NEXUS
 
-A gamified Web3 strategy hub where users explore DeFi opportunities, battle market risk, and level up as Signal Knights.
+> Forge signals. Scan risk. Conquer yield.
 
-OPSignal Nexus transforms complex DeFi analysis into an interactive RPG-style experience. Instead of traditional dashboards, users interact with a game-like interface to scan vaults, forge yield strategies, and compete with other players.
-
----
-
-## 🚀 Concept
-
-In OPSIGNAL NEXUS, users become **Signal Knights**.
-
-Your mission is to:
-
-- Predict profitable signals
-- Scan DeFi vaults for risk
-- Forge yield strategies
-- Complete quests
-- Compete with other players
-
-Every action rewards **XP**, allowing players to level up and climb the leaderboard.
+A fully client-side Web3 gamified DeFi application built as a fantasy RPG strategy game for signal hunters.
 
 ---
 
-## 🎮 Core Features
+## 🚀 Getting Started
 
-### ⚔ Signal Battle
+```bash
+npm install
+npm run dev
+```
 
-Predict token performance and battle market risk.
-
-Players submit signals with:
-
-- Token
-- Target multiplier
-- Confidence
-- Stake amount
-- Duration
-
-The system simulates a battle outcome based on risk score and probability.
-
-Rewards:
-
-- XP
-- Multiplier bonuses
-- Improved win rate
+Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-### 📡 Risk Radar
+## 🏗 Tech Stack
 
-Scan DeFi vaults with a radar-style analyzer.
-
-Generated metrics include:
-
-- APY
-- Liquidity
-- Whale concentration
-- Stability score
-
-The radar computes a **Risk Index** and visualizes the results using a radar chart.
+- **Next.js 14** (App Router)
+- **React 18** + **TypeScript**
+- **TailwindCSS** — custom arcane/fantasy theme
+- **Recharts** — radar and data visualization
+- **OP_NET Wallet API** — with MetaMask fallback
 
 ---
 
-### 🔨 Yield Forge
+## 🗺 Routes
 
-Simulate yield strategies.
-
-Players can stake tokens in a forge system that generates:
-
-- APR
-- Auto-compound bonuses
-- Time multipliers
-
-Staking actions also reward XP.
-
----
-
-### 🧭 Quest System
-
-Daily quests encourage exploration and interaction.
-
-Examples:
-
-- Win 1 signal battle
-- Scan 2 vaults
-- Forge 1 yield strategy
-
-Completing quests grants XP rewards.
+| Route | Feature |
+|-------|---------|
+| `/` | Main Hub — Portal navigation |
+| `/battle` | Signal Battle — Submit predictions, win XP |
+| `/radar` | Risk Radar — Vault scanning with radar chart |
+| `/forge` | Yield Forge — Staking simulator |
+| `/quests` | Quest Log — Daily missions |
+| `/guild` | Guild Hall — Leaderboards |
+| `/arena` | Signal Arena — PvP challenges |
+| `/dungeon` | Vault Dungeon — Boss raid raids |
 
 ---
 
-### 🏆 Guild Leaderboard
+## ⚙ Architecture
 
-Compete with other players and climb the ranking board.
+### Client-Side Only
+All gameplay runs deterministically in the browser. No backend required.
 
-Leaderboard tracks:
+### Wallet Integration
+Uses **OP_NET wallet API** (`window.opnet`) with automatic fallback to MetaMask (`window.ethereum`).
+Demo mode auto-generates a mock wallet address if no wallet is installed.
 
-- Player level
-- XP
-- Win rate
-- Battle results
+### State Management
+Player state persisted in `localStorage` keyed by wallet address:
 
-Top players receive special ranking badges.
+```typescript
+playerState = {
+  walletAddress, xp, level, wins, losses,
+  winrate, multiplier, questProgress, artifacts
+}
+```
 
----
-
-### ⚔ Signal Arena (PvP)
-
-Players can challenge signals submitted by other users.
-
-Arena battles simulate prediction competitions between players, rewarding XP to the winner.
-
----
-
-### 🏰 Vault Dungeon
-
-Vaults are represented as **dungeons**.
-
-Players can enter a dungeon to challenge its risk level. Successfully clearing a dungeon unlocks rewards and artifacts.
-
----
-
-### 🔮 AI Signal Companion
-
-A built-in assistant analyzes player actions and vault metrics.
-
-It provides insights such as:
-
-- High whale concentration warnings
-- Liquidity instability alerts
-- APY anomalies
-
----
-
-## 🧠 Gamification System
-
-Player progression includes:
-
-- XP
-- Levels
-- Wins / losses
-- Win rate
-- Multiplier bonuses
-
-Level formula:
+### Level Formula
+```
 level = floor(sqrt(xp / 100))
-
-All player state is stored locally and linked to the connected wallet.
-
----
-
-## 🔗 Wallet Integration
-
-OPSignal Nexus integrates with **OP_NET wallets**.
-
-Wallet features include:
-
-- Connect wallet
-- Player identity
-- Action signing
-- State association with wallet address
-
-Wallet actions include:
-
-- Entering signal battles
-- Staking in yield forge
-- Claiming quest rewards
+```
 
 ---
 
-## 🧩 Tech Stack
+## 🎮 Game Systems
 
-- Next.js 14
-- React
-- TypeScript
-- TailwindCSS
-- OP_NET Wallet API
+### Signal Battle
+- Submit token signal with confidence, duration, multiplier, stake
+- Deterministic win probability: `confidence * (1 - riskScore)`
+- Rewards XP and multiplier bonuses
 
-The application runs fully **client-side**, using deterministic simulation logic for gameplay mechanics.
+### Risk Radar
+- Simulates vault scanning with animated radar sweep
+- Generates APY, liquidity, whale %, stability metrics
+- Displays radar chart + AI Oracle insights
+
+### Yield Forge
+- Staking simulator with APR, time multiplier, auto-compound
+- XP rewards based on stake amount and duration
+
+### Quest System
+- Daily quests reset at midnight UTC
+- Win battles, scan vaults, forge yields
+
+### Guild Leaderboard
+- Shows mock + real player rankings
+- Gold/Silver/Bronze badges for top 3
+
+### Signal Arena (PvP)
+- Live signal board with challengeable signals
+- Deterministic battle resolution
+
+### Vault Dungeon
+- 8 dungeons with varying difficulty
+- Chance to unlock artifacts
+- Success rate based on player level
 
 ---
 
-## 📂 Project Structure
+## 🎨 Design System
+
+**Colors:** Deep navy `#020818`, dark purple `#1a0a2e`, gold `#f59e0b`, arcane purple `#7b2ec8`
+
+**Fonts:**
+- Display: Cinzel (headers, titles)
+- Body: Crimson Pro (lore, descriptions)
+- UI: Rajdhani (labels, stats)
+- Mono: JetBrains Mono (addresses, values)
+
+**Animations:** Portal pulse, radar sweep, particle background, XP fill, battle shake
+
+---
+
+## 📁 Project Structure
+
+```
 app/
-battle/
-radar/
-forge/
-quests/
-guild/
-arena/
-dungeon/
+  page.tsx              # Main Hub
+  battle/page.tsx       # Signal Battle
+  radar/page.tsx        # Risk Radar
+  forge/page.tsx        # Yield Forge
+  quests/page.tsx       # Quest Log
+  guild/page.tsx        # Guild Hall
+  arena/page.tsx        # Signal Arena
+  dungeon/page.tsx      # Vault Dungeon
+  globals.css           # Global styles + fonts
 
 components/
-HUD
-XPBar
-PortalButton
-BattlePanel
-RadarScanner
-ForgePanel
-QuestBoard
-ArenaBoard
-DungeonPanel
-AICompanion
-Leaderboard
+  HUD.tsx               # Top navigation bar
+  PortalButton.tsx      # Animated portal navigation buttons
+  XPBar.tsx             # XP progress display
+  AICompanion.tsx       # Oracle AI insights panel
+  BattleResultModal.tsx # Animated battle outcome modal
+  Leaderboard.tsx       # Guild rankings table
+  ParticleBackground.tsx # Canvas particle system
 
 lib/
-gameEngine
-riskEngine
-stakingEngine
-arenaEngine
-dungeonEngine
-xpSystem
-leaderboard
-
-
----
-
-## 🧪 Running the Project
-
-Clone the repository:
-git clone https://github.com/yourusername/opsignal-nexus.git
-
-Install dependencies:
-npm install
-
-Run development server:
-npm run dev
-
-Open in browser:
-http://localhost:3000
-
-
----
-
-## 🌐 Deployment
-
-The project can be easily deployed using:
-
-- Vercel
-
----
-
-## 🎯 Hackathon Submission
-
-This project was built for the **VibeCode Finance Challenge**.
-
-The goal was to explore how DeFi tools can be reimagined through gamified interfaces.
-
----
-
+  walletContext.tsx     # OP_NET wallet + global state
+  xpSystem.ts           # XP, leveling, player state
+  gameEngine.ts         # Battle logic
+  riskEngine.ts         # Vault scanning
+  stakingEngine.ts      # Yield forge calculations
+  arenaEngine.ts        # PvP arena logic
+  dungeonEngine.ts      # Dungeon raids
+  leaderboard.ts        # Rankings data
+```

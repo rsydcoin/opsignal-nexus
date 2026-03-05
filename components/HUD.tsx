@@ -28,6 +28,7 @@ export default function HUD() {
         {/* Center: Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {[
+            { href: '/observatory', label: 'Observatory', icon: '🛰', highlight: true },
             { href: '/battle', label: 'Battle', icon: '⚔' },
             { href: '/radar', label: 'Radar', icon: '📡' },
             { href: '/forge', label: 'Forge', icon: '🔥' },
@@ -35,9 +36,23 @@ export default function HUD() {
             { href: '/guild', label: 'Guild', icon: '🏰' },
             { href: '/arena', label: 'Arena', icon: '🗡' },
             { href: '/dungeon', label: 'Dungeon', icon: '💀' },
+            { href: '/leaderboard', label: 'Board', icon: '🏆' },
           ].map(nav => (
             <Link key={nav.href} href={nav.href}
-              className="px-3 py-1 rounded font-ui text-xs font-500 text-purple-300 hover:text-yellow-400 hover:bg-yellow-500/10 transition-all border border-transparent hover:border-yellow-500/20">
+              className="px-3 py-1 rounded font-ui text-xs font-500 transition-all border"
+              style={{
+                color: (nav as { highlight?: boolean }).highlight ? '#00e5ff' : undefined,
+                borderColor: (nav as { highlight?: boolean }).highlight ? 'rgba(0,229,255,0.2)' : 'transparent',
+                background: (nav as { highlight?: boolean }).highlight ? 'rgba(0,229,255,0.05)' : undefined,
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.color = '#fbbf24';
+                (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(245,158,11,0.07)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.color = (nav as { highlight?: boolean }).highlight ? '#00e5ff' : '';
+                (e.currentTarget as HTMLAnchorElement).style.background = (nav as { highlight?: boolean }).highlight ? 'rgba(0,229,255,0.05)' : '';
+              }}>
               <span className="mr-1">{nav.icon}</span>{nav.label}
             </Link>
           ))}

@@ -152,8 +152,60 @@ body {
   animation: particleDrift 8s ease-in-out infinite;
 }
 
-/* Scan overlay */
-.scan-overlay {
+/* Animated grid utility */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(123,46,200,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,46,200,0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Signal pulse */
+@keyframes signalPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.92); }
+}
+.signal-pulse {
+  animation: signalPulse 2s ease-in-out infinite;
+}
+
+/* Number counter tick */
+@keyframes counterTick {
+  from { opacity: 0.3; transform: translateY(-4px); }
+  to   { opacity: 1;   transform: translateY(0); }
+}
+.counter-tick {
+  animation: counterTick 0.25s ease-out;
+}
+
+/* Card hover elevation */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* Metric status indicator */
+.status-dot-online  { background: #00e676; box-shadow: 0 0 6px #00e676; }
+.status-dot-warning { background: #fbbf24; box-shadow: 0 0 6px #fbbf24; }
+.status-dot-error   { background: #ff1744; box-shadow: 0 0 6px #ff1744; }
+
+/* Scan line for observatory */
+@keyframes scanDown {
+  0%   { top: 0%; opacity: 0.8; }
+  90%  { opacity: 0.3; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line-down {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.6), transparent);
+  animation: scanDown 4s linear infinite;
+}
+
   position: absolute;
   left: 0;
   right: 0;

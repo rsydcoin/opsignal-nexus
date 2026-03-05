@@ -7,6 +7,7 @@ import XPBar from '@/components/XPBar';
 import { getLevelTitle } from '@/lib/xpSystem';
 
 const PORTALS = [
+  { href: '/observatory', icon: '🛰', label: 'Observatory', subtitle: 'AI signal intelligence', color: 'cyan' as const },
   { href: '/battle', icon: '⚔', label: 'Signal Battle', subtitle: 'Test your predictions', color: 'gold' as const },
   { href: '/radar', icon: '📡', label: 'Risk Radar', subtitle: 'Scan vault dangers', color: 'cyan' as const },
   { href: '/forge', icon: '🔥', label: 'Yield Forge', subtitle: 'Stake & earn XP', color: 'red' as const },
@@ -14,6 +15,7 @@ const PORTALS = [
   { href: '/guild', icon: '🏰', label: 'Guild Hall', subtitle: 'Leaderboards', color: 'purple' as const },
   { href: '/arena', icon: '🗡', label: 'Signal Arena', subtitle: 'PvP challenges', color: 'red' as const },
   { href: '/dungeon', icon: '💀', label: 'Vault Dungeon', subtitle: 'Dungeon raids', color: 'purple' as const },
+  { href: '/leaderboard', icon: '🏆', label: 'Observer Board', subtitle: 'Signal rankings', color: 'gold' as const },
 ];
 
 export default function HomePage() {
