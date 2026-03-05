@@ -240,7 +240,7 @@ export default function ObservatoryPage() {
               </div>
               <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
             </div>
-            <div className="divide-y max-h-80 overflow-y-auto" style={{ divideColor: 'rgba(255,23,68,0.1)' }}>
+            <div className="divide-y divide-red-900/30 max-h-80 overflow-y-auto">
               {anomalies.length === 0 ? (
                 <div className="px-4 py-8 text-center font-mono text-xs text-purple-400/40">
                   No anomalies detected...
