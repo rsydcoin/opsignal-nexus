@@ -8,6 +8,7 @@ import { getLevelTitle } from '@/lib/xpSystem';
 import MarketTicker from '@/components/MarketTicker';
 
 const PORTALS = [
+  { href: '/defi',         icon: '⚡', label: 'DeFi Hub',      subtitle: 'Swap, stake & strategy', color: 'gold' as const },
   { href: '/observatory',  icon: '🛰', label: 'Observatory',   subtitle: 'AI signal intelligence', color: 'cyan' as const },
   { href: '/timemachine', icon: '⏳', label: 'Time Machine',   subtitle: 'Explore signal history',  color: 'purple' as const },
   { href: '/timeline',    icon: '📋', label: 'Signal Timeline', subtitle: 'Chronological feed',     color: 'cyan' as const },

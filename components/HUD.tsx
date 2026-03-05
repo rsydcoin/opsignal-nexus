@@ -35,6 +35,7 @@ export default function HUD() {
             { href: '/predictions', label: 'Markets',      icon: '📊', highlight: false },
             { href: '/battle', label: 'Battle', icon: '⚔' },
             { href: '/radar', label: 'Radar', icon: '📡' },
+            { href: '/defi',  label: 'DeFi',  icon: '⚡', highlight: true },
             { href: '/forge', label: 'Forge', icon: '🔥' },
             { href: '/quests', label: 'Quests', icon: '📜' },
             { href: '/guild', label: 'Guild', icon: '🏰' },
